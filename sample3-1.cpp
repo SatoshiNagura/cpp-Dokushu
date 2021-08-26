@@ -2,25 +2,30 @@
 
 #include <iostream>
 
-class product{
-  int id;
+//*1,2の回答
+class A{
+  int v;
 public:
-  int get_id();
-  void set_id(int new_id);
+  void set(int value);
+  int get();
+  int get() const;//constな呼び出しをされるため，constメンバー関数を追加
 };
 
-int product::get_id(){
-  return id;
+void A::set(int value){
+  v = value;
 }
 
-void product::set_id(int new_id){
-  id = new_id;
+int A::get() const{
+  return v;
 }
 
 int main(){
-  product p;
-  p.set_id(42);
-  std::cout << p.get_id << std::endl;
+  A a;
+  a.set(42);
 
-  const product cp{};
+  const A& ca = a;//constなclass caをaと同一アドレスとして定義
+  ca.get();//constメンバー関数をオーバーロード
 }
+
+//3の回答
+//メンバー関数によって変更できるメンバー変数を定義することが出来る。
