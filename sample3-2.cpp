@@ -12,7 +12,7 @@
 class person{
   std::string Name;
   int Height, Weight;
-  mutable double Bmi;
+  double Bmi;
 public:
   person();
   void set_nhw(std::string *n, int *h, int *w);
@@ -20,7 +20,7 @@ public:
   ~person();
 };
 
-person::person():Height(-1), Weight(-1), Bmi(-1){
+person::person():Height(-1), Weight(-1), Bmi(0.1){
   std::cout << "コンストラクターの呼び出し" << std::endl;
 };
 
@@ -31,7 +31,9 @@ void person::set_nhw(std::string *n, int *h, int *w){
 };
 
 void person::BMI(){
-  Bmi = Weight / Height / Height;
+  std::cout << Bmi << std::endl;
+  Bmi = (double)Weight / Height / Height;
+  std::cout << Weight << ", " << Height << std::endl;
   std::cout << Name << "のBMIは，" << Bmi << std::endl;
 };
 
